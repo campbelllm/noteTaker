@@ -55,7 +55,7 @@ app.post('/api/notes', (req, res) => {
     fs.writeFile('../db/db.json', noteStringify, (err) => {
         if(err) throw err;
     })
-    res.status(400)
+    res.send(noteStringify)
 })
 
 app.listen(PORT, () => console.log(`Listening on PORT ${PORT}`))
