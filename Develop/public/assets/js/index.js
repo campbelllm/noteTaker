@@ -137,6 +137,7 @@ const renderNoteList = (notes) => {
 
 // Gets notes from the db and renders them to the sidebar
 const getAndRenderNotes = () => {
+  console.log('DID I GET HIT HERE?')
   return getNotes().then(renderNoteList);
 };
 
@@ -149,3 +150,4 @@ $noteText.on("keyup", handleRenderSaveBtn);
 
 // Gets and renders the initial list of notes
 getAndRenderNotes();
+console.log("THIS THING RAN")
