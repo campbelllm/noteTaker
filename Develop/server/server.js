@@ -35,19 +35,21 @@ app.get('/api/notes', (req, res) => {
 app.post('/api/notes', (req, res) => {
     //grabbing current notes from db.json
     const notes = JSON.parse(fs.readFileSync(path.join(__dirname, '../db/db.json')));
-    //grabbing last id in array
-    let id = notes[notes.length -1].id
     //if there is no id yet, set id to 0
-    if(!id){
-        id = 0;
+   let id = () => { 
+    if(notes.length === 0){
+        return 0;
     //otherwise set id to last id in array + 1
     }else{
-        id++;
+        let setId = notes[notes.length -1].id
+        setId++;
+        return setId;
     }
+}
     // here we are adding the new note typed in, assigning values to a var
     const newNote =  req.body
     //giving the new not and id
-    newNote.id = id
+    newNote.id = id();
     //push new not to notes array (what we grabbed from the file above)
     notes.push(newNote)
     const noteStringify = JSON.stringify(notes)
