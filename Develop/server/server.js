@@ -58,4 +58,21 @@ app.post('/api/notes', (req, res) => {
     res.send(noteStringify)
 })
 
+app.delete('/api/notes/:id', (req, res) => {
+    const id = req.params.id;
+    console.log(id)
+
+    const notes = JSON.parse(fs.readFileSync(path.join(__dirname, '../db/db.json')));
+    
+    const removedNote = notes.filter(note => note.id !== parseInt(id))
+    const finalNote = JSON.stringify(removedNote)
+    console.log(removedNote);
+    fs.writeFile('../db/db.json', finalNote, (err) => {
+        if (err) throw err;
+    })
+
+    res.send(finalNote)
+    
+})
+
 app.listen(PORT, () => console.log(`Listening on PORT ${PORT}`))
