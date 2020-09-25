@@ -3,6 +3,7 @@ const express = require('express');
 const app = express();
 const fs = require('fs');
 const path = require('path');
+const { runInNewContext } = require('vm');
 
 //port
 const PORT = 8080;
@@ -21,8 +22,12 @@ app.get('/notes', (req, res) => {
     res.sendFile(path.join(__dirname, '../public/notes.html'))
 });
 
+//sending back notes in json
 app.get('/api/notes', (req, res) => {
-    res.send('notes')
+    fs.readFile(path.join(__dirname, '../db/db.json'), (err, notes) => {
+        if (err) throw err;
+        res.send(JSON.parse(notes))
+    })
 })
 
 app.listen(PORT, () => console.log(`Listening on PORT ${PORT}`))
