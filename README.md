@@ -1,4 +1,4 @@
-# Unit 11 Express Homework: Note Taker
+# Week 11 Homeworkd: Note Taker
 
 ## Description
 
@@ -44,7 +44,7 @@ Application should allow users to delete previously saved notes.
 
 ## Deploying the App
 
-You will not be able to deploy your server side code on GitHub pages. This app should be deployed on Heroku. Carefully follow the [Heroku Guide](../04-Supplemental/HerokuGuide.md) for getting your app deployed on Heroku.
+[Heroku Guide](../04-Supplemental/HerokuGuide.md)
 
 - - -
 
