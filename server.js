@@ -2,12 +2,13 @@
 const express = require("express");
 const app = express();
 const notesController = require("./notesController");
+const path = require('path');
 const PORT = process.env.PORT || 8080;
 
 //middlware
 app.use(express.json());
 // for any request check this static (never changing, not moving, css, html, js) to see if there is anything request needs
-app.use(express.static("../public"));
+app.use(express.static(path.join(__dirname, "./public")));
 //telling express what to kind of data to expect on the request
 app.use(express.urlencoded({ extended: true }));
 
